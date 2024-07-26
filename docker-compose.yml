@@ -16,20 +16,20 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
     depends_on:
-      - mssql
+      - db
     networks:
       - erp_network
 
-  mssql:
-    container_name: sql-server
-    image: mcr.microsoft.com/mssql/server:2022-latest
+  db:
+    image: mysql:8.3.0
     restart: always
     environment:
-      ACCEPT_EULA: "Y"
-      MSSQL_SA_PASSWORD: "password"
+      MYSQL_DATABASE: ${DB_DATABASE}
+      MYSQL_PASSWORD: ${DB_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${DB_PASSWORD}
     ports:
-      - 3306:1433
+      - "3308:3307"
+    volumes:
+      - ./mysql-data:/var/lib/mysql
     networks:
       - erp_network
-
-    
