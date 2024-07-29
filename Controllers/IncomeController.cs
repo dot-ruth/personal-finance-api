@@ -13,7 +13,15 @@ public class IncomeController : ControllerBase
         this.dbContext = dbContext;
     }
 
-      [HttpGet]
+    [HttpPost]
+    public async Task<ActionResult<Income>> CreateIncome(Income income)
+    {
+        dbContext.Income.Add(income);
+        await dbContext.SaveChangesAsync();
+        return CreatedAtAction("GetIncome", new { id = income.Id }, income);
+    }
+
+    [HttpGet]
     public async Task<ActionResult<IEnumerable<Income>>> GetIncome()
     {
         return await dbContext.Income.ToListAsync();
