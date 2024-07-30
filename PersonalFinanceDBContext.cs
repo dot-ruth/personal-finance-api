@@ -11,6 +11,7 @@ public  class PersonalFinanceDBContext : IdentityDbContext<User>
 
     public  DbSet<Income> Income {get; set;}
     public  DbSet<Expense> Expense {get; set;}
+    public  DbSet<Budget> Budget {get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
