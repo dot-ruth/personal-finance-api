@@ -3,6 +3,7 @@ using System;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using personal_finance_api;
 
@@ -11,9 +12,11 @@ using personal_finance_api;
 namespace personal_finance_api.Migrations
 {
     [DbContext(typeof(PersonalFinanceDBContext))]
-    partial class PersonalFinanceDBContextModelSnapshot : ModelSnapshot
+    [Migration("20240730064714_addedBudgetTable")]
+    partial class addedBudgetTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
