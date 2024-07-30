@@ -178,6 +178,22 @@ namespace personal_finance_api.Migrations
                     b.ToTable("Budget");
                 });
 
+            modelBuilder.Entity("personal_finance_api.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("CategoryName")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
+                });
+
             modelBuilder.Entity("personal_finance_api.Models.Expense", b =>
                 {
                     b.Property<int>("Id")
