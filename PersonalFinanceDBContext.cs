@@ -10,6 +10,7 @@ public  class PersonalFinanceDBContext : IdentityDbContext<User>
     public PersonalFinanceDBContext(DbContextOptions<PersonalFinanceDBContext> options) : base(options) { }
 
     public  DbSet<Income> Income {get; set;}
+    public  DbSet<Expense> Expense {get; set;}
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
