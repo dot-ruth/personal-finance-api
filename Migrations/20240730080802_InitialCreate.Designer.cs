@@ -12,8 +12,8 @@ using personal_finance_api;
 namespace personal_finance_api.Migrations
 {
     [DbContext(typeof(PersonalFinanceDBContext))]
-    [Migration("20240730064714_addedBudgetTable")]
-    partial class addedBudgetTable
+    [Migration("20240730080802_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -179,6 +179,22 @@ namespace personal_finance_api.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Budget");
+                });
+
+            modelBuilder.Entity("personal_finance_api.Models.Category", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    MySqlPropertyBuilderExtensions.UseMySqlIdentityColumn(b.Property<int>("Id"));
+
+                    b.Property<decimal>("CategoryName")
+                        .HasColumnType("decimal(65,30)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Category");
                 });
 
             modelBuilder.Entity("personal_finance_api.Models.Expense", b =>
